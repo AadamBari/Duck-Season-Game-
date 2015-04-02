@@ -14,15 +14,17 @@ public class Duck extends JComponent implements ActionListener{
 	
 	Timer timer;
 	
-	int duckHeight, duckWidth;
+	int bodyHeight, bodyWidth, headHeight, headWidth;
 	int duckX, duckY, speed;
 	
 	public Duck() {
 		
-		this.duckHeight = 60;
-		this.duckWidth = 40;
+		this.bodyHeight = 40;
+		this.bodyWidth = 60;
+		this.headHeight = 20;
+		this.headWidth = 20;
 		this.duckX = 0;
-		this.duckY = 0;
+		this.duckY = 50;
 		this.speed = 1;
 		
 		timer = new Timer(10, this);
@@ -30,7 +32,7 @@ public class Duck extends JComponent implements ActionListener{
 	}
 	
 
-	//paintComponent automatically called everytime JFrame is changed
+	//paintComponent automatically called every time JFrame is changed
 	public void paintComponent(Graphics g) {
 		
 		//create graphics object
@@ -41,8 +43,11 @@ public class Duck extends JComponent implements ActionListener{
 		g2.setColor(bodyC);
 		
 		//create ellipse for duck body
-		Ellipse2D.Double duckBody = new Ellipse2D.Double(duckX, duckY, duckHeight, duckWidth);
+		Ellipse2D.Double duckBody = new Ellipse2D.Double(duckX, duckY, bodyWidth, bodyHeight);
 		g2.fill(duckBody);
+		
+		Ellipse2D.Double duckHead = new Ellipse2D.Double(duckX, duckY - 20, headWidth, headHeight);
+		g2.fill(duckHead);
 		
 		/*
 		Point2D.Double p1 = new Point2D.Double(200, 200);
@@ -53,9 +58,11 @@ public class Duck extends JComponent implements ActionListener{
 		*/
 	}//end paintComponent
 	
+	
+	
 	public void actionPerformed(ActionEvent e) {
 		
-		duckX += speed;
+		//duckX += speed;
 		
 		
 		repaint();
