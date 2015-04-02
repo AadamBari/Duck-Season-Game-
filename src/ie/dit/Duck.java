@@ -1,25 +1,47 @@
 package ie.dit;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import javax.swing.JComponent;
-import java.awt.Rectangle;
-import java.awt.Color;
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Duck extends JComponent{
+import javax.swing.JComponent;
+import javax.swing.Timer;
+
+public class Duck extends JComponent implements ActionListener{
+	
+	Timer timer;
+	
+	int duckHeight, duckWidth;
+	int duckX, duckY, speed;
+	
+	public Duck() {
+		
+		this.duckHeight = 60;
+		this.duckWidth = 40;
+		this.duckX = 0;
+		this.duckY = 0;
+		this.speed = 1;
+		
+		timer = new Timer(10, this);
+        timer.start();
+	}
+	
 
 	//paintComponent automatically called everytime JFrame is changed
 	public void paintComponent(Graphics g) {
+		
 		//create graphics object
 		Graphics2D g2 = (Graphics2D) g;
+		
 		//set color
 		Color bodyC = new Color(255, 251, 0);
 		g2.setColor(bodyC);
+		
 		//create ellipse for duck body
-		Ellipse2D.Double duckBody = new Ellipse2D.Double(100, 100, 50, 20);
+		Ellipse2D.Double duckBody = new Ellipse2D.Double(duckX, duckY, duckHeight, duckWidth);
 		g2.fill(duckBody);
 		
 		/*
@@ -30,6 +52,14 @@ public class Duck extends JComponent{
 		g2.draw(l2);
 		*/
 	}//end paintComponent
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		duckX += speed;
+		
+		
+		repaint();
+	}
 	
 	
 	
