@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 
 public class Frame extends JFrame {
 	
-	Duck d = new Duck();
+	
 
 	public Frame()
     {
@@ -17,9 +17,9 @@ public class Frame extends JFrame {
         
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
-        this.add(d);
     }
 	
+
 	
 	public static void main(String[] args){
 		
