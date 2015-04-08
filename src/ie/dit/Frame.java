@@ -11,13 +11,14 @@ public class Frame extends JFrame {
     {
 		
         this.setTitle("Duck Season");
-        this.setSize(1024, 768);
+        this.setSize(1000, 700);
         this.setLocationRelativeTo(null);// Puts frame to center of the screen.
         this.setResizable(false);
         
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
+	
 	
 
 	

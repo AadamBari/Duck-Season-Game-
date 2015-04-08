@@ -8,9 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class Duck extends JComponent implements ActionListener{
+public class Duck extends JPanel implements ActionListener{
 	
 	Timer timer;
 	
@@ -24,16 +25,22 @@ public class Duck extends JComponent implements ActionListener{
 		this.headHeight = 20;
 		this.headWidth = 20;
 		this.duckX = 0;
-		this.duckY = 50;
-		this.speed = 1;
+		this.duckY = 350;
+		this.speed = 5;
 		
-		timer = new Timer(10, this);
+		timer = new Timer(10, this);//use 10
         timer.start();
 	}
 	
 
 	//paintComponent automatically called every time JFrame is changed
 	public void paintComponent(Graphics g) {
+		
+		super.paintComponent(g);
+		
+		//set background
+		Color backC = new Color(0, 173, 255);
+		this.setBackground(backC);
 		
 		//create graphics object
 		Graphics2D g2 = (Graphics2D) g;
@@ -43,11 +50,17 @@ public class Duck extends JComponent implements ActionListener{
 		g2.setColor(bodyC);
 		
 		//create ellipse for duck body
-		Ellipse2D.Double duckBody = new Ellipse2D.Double(duckX, duckY, bodyWidth, bodyHeight);
-		g2.fill(duckBody);
-		
-		Ellipse2D.Double duckHead = new Ellipse2D.Double(duckX, duckY - 20, headWidth, headHeight);
-		g2.fill(duckHead);
+		for (int i = 0; i < 10; i++)
+		{
+			Ellipse2D.Double duckBody = new Ellipse2D.Double(duckX, duckY, bodyWidth, bodyHeight);
+			g2.fill(duckBody);
+			
+			Ellipse2D.Double duckHead = new Ellipse2D.Double(duckX + 40, duckY - 20, headWidth, headHeight);
+			g2.fill(duckHead);
+			
+			
+		}
+
 		
 		/*
 		Point2D.Double p1 = new Point2D.Double(200, 200);
@@ -62,7 +75,12 @@ public class Duck extends JComponent implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
 		
-		//duckX += speed;
+		if (duckX > 1000)
+		{
+			duckX = -100;
+		}
+		duckX += speed;
+		
 		
 		
 		repaint();
