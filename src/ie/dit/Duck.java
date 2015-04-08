@@ -16,7 +16,9 @@ public class Duck extends JPanel implements ActionListener{
 	Timer timer;
 	
 	int bodyHeight, bodyWidth, headHeight, headWidth;
-	int duckX, duckY, speed;
+	int[] duckX = new int[10];
+	int[] duckY = new int[10];
+	int speed;
 	
 	public Duck() {
 		
@@ -24,9 +26,13 @@ public class Duck extends JPanel implements ActionListener{
 		this.bodyWidth = 60;
 		this.headHeight = 20;
 		this.headWidth = 20;
-		this.duckX = 0;
-		this.duckY = 350;
 		this.speed = 5;
+		
+		for (int i = 0; i <10; i++) {
+			
+			this.duckX[i] = 0;
+			this.duckY[i] = 350;
+		}
 		
 		timer = new Timer(10, this);//use 10
         timer.start();
@@ -52,12 +58,13 @@ public class Duck extends JPanel implements ActionListener{
 		//create ellipse for duck body
 		for (int i = 0; i < 10; i++)
 		{
-			Ellipse2D.Double duckBody = new Ellipse2D.Double(duckX, duckY, bodyWidth, bodyHeight);
+			Ellipse2D.Double duckBody = new Ellipse2D.Double(duckX[i], duckY[i], bodyWidth, bodyHeight);
 			g2.fill(duckBody);
 			
-			Ellipse2D.Double duckHead = new Ellipse2D.Double(duckX + 40, duckY - 20, headWidth, headHeight);
+			Ellipse2D.Double duckHead = new Ellipse2D.Double(duckX[i] + 40, duckY[i] - 20, headWidth, headHeight);
 			g2.fill(duckHead);
 			
+			duckX[i] += speed;
 			
 		}
 
@@ -75,13 +82,15 @@ public class Duck extends JPanel implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
 		
-		if (duckX > 1000)
+		for(int i = 0; i < 10; i++)
 		{
-			duckX = -100;
+			
+			if (duckX[i] > 1000)
+			{
+				duckX[i] = - 100;
+				
+			}
 		}
-		duckX += speed;
-		
-		
 		
 		repaint();
 	}
