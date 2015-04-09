@@ -92,7 +92,8 @@ public class Duck extends JPanel implements ActionListener{
 			
 			if (duckX[i] > 1000)
 			{
-				duckX[i] = -1 * num.nextInt(200);
+				duckX[i] = -1 * num.nextInt(1000);
+				duckY[i] = num.nextInt(640);
 				
 			}
 		}
