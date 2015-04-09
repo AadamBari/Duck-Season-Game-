@@ -24,7 +24,7 @@ public class Duck extends JPanel implements ActionListener{
 	
 	public Duck() {
 		
-		//Random init = new Random();
+		Random init = new Random();
 		
 		this.bodyHeight = 40;
 		this.bodyWidth = 60;
@@ -34,8 +34,8 @@ public class Duck extends JPanel implements ActionListener{
 		
 		for (int i = 0; i <10; i++) {
 			
-			this.duckX[i] = -50;
-			this.duckY[i] = 300;
+			this.duckX[i] = -1 * init.nextInt(1000);
+			this.duckY[i] = init.nextInt(640);
 		}
 		
 		timer = new Timer(10, this);//use 10
