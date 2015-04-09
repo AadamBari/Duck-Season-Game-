@@ -11,6 +11,8 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import java.util.Random;
+
 public class Duck extends JPanel implements ActionListener{
 	
 	Timer timer;
@@ -30,13 +32,14 @@ public class Duck extends JPanel implements ActionListener{
 		
 		for (int i = 0; i <10; i++) {
 			
-			this.duckX[i] = 0;
-			this.duckY[i] = 350;
+			this.duckX[i] = -50;
+			this.duckY[i] = 300;
 		}
 		
 		timer = new Timer(10, this);//use 10
         timer.start();
-	}
+        
+       	}
 	
 
 	//paintComponent automatically called every time JFrame is changed
@@ -82,15 +85,18 @@ public class Duck extends JPanel implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
 		
+		Random num = new Random();
+		
 		for(int i = 0; i < 10; i++)
 		{
 			
 			if (duckX[i] > 1000)
 			{
-				duckX[i] = - 100;
+				duckX[i] = -1 * num.nextInt(200);
 				
 			}
 		}
+		
 		
 		repaint();
 	}
