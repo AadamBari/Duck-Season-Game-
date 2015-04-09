@@ -24,6 +24,8 @@ public class Duck extends JPanel implements ActionListener{
 	
 	public Duck() {
 		
+		//Random init = new Random();
+		
 		this.bodyHeight = 40;
 		this.bodyWidth = 60;
 		this.headHeight = 20;
@@ -85,15 +87,15 @@ public class Duck extends JPanel implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
 		
-		Random num = new Random();
+		Random reInit = new Random();
 		
 		for(int i = 0; i < 10; i++)
 		{
 			
 			if (duckX[i] > 1000)
 			{
-				duckX[i] = -1 * num.nextInt(1000);
-				duckY[i] = num.nextInt(640);
+				duckX[i] = -1 * reInit.nextInt(1000);
+				duckY[i] = reInit.nextInt(640);
 				
 			}
 		}
