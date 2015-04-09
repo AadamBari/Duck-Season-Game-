@@ -25,19 +25,25 @@ public class Duck extends JPanel implements ActionListener{
 	public Duck() {
 		
 		Random init = new Random();
+		//random variable for duck positions
 		
+		//duck dimensions
 		this.bodyHeight = 40;
 		this.bodyWidth = 60;
 		this.headHeight = 20;
 		this.headWidth = 20;
+		
+		//duck velocity
 		this.speed = 5;
 		
+		//Initializing duck positions
 		for (int i = 0; i <10; i++) {
 			
 			this.duckX[i] = -1 * init.nextInt(1000);
 			this.duckY[i] = init.nextInt(640);
 		}
 		
+		//set timer refresh every ten milliseconds
 		timer = new Timer(10, this);//use 10
         timer.start();
         
@@ -87,12 +93,12 @@ public class Duck extends JPanel implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
 		
-		Random reInit = new Random();
-		
+		Random reInit = new Random(); //random class for duck position
+		//Reinitializing duck position after duck reaches the end of the screen
 		for(int i = 0; i < 10; i++)
 		{
 			
-			if (duckX[i] > 1000)
+			if (duckX[i] > 1000)//when duck reaches end of screen
 			{
 				duckX[i] = -1 * reInit.nextInt(1000);
 				duckY[i] = reInit.nextInt(640);
