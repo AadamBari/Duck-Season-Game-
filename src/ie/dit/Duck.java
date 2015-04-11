@@ -6,6 +6,8 @@ import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -13,7 +15,7 @@ import javax.swing.Timer;
 
 import java.util.Random;
 
-public class Duck extends JPanel implements ActionListener{
+public class Duck extends JPanel implements ActionListener,  MouseListener{
 	
 	Timer timer;
 	
@@ -47,7 +49,7 @@ public class Duck extends JPanel implements ActionListener{
 		timer = new Timer(10, this);//use 10
         timer.start();
         
-       	}
+       	}//end Duck() method
 	
 
 	//paintComponent automatically called every time JFrame is changed
@@ -78,6 +80,10 @@ public class Duck extends JPanel implements ActionListener{
 			duckX[i] += speed;
 			
 		}
+		
+		Ellipse2D.Double oval = new Ellipse2D.Double(500, 500, 100, 100);
+		g2.fill(oval);
+		
 
 		
 		/*
@@ -103,11 +109,46 @@ public class Duck extends JPanel implements ActionListener{
 				duckX[i] = -1 * reInit.nextInt(1000);
 				duckY[i] = reInit.nextInt(640);
 				
-			}
-		}
+			}//end if
+		}//end for
 		
 		
 		repaint();
+	} //end actionPerformed()
+
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		
+		
+		   
+		 }
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
