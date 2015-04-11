@@ -23,6 +23,8 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 	int[] duckX = new int[10];
 	int[] duckY = new int[10];
 	int speed;
+	int test = 500;
+	Ellipse2D.Double oval;
 	
 	public Duck() {
 		
@@ -81,7 +83,7 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 			
 		}
 		
-		Ellipse2D.Double oval = new Ellipse2D.Double(500, 500, 100, 100);
+		oval = new Ellipse2D.Double(500, 500, 100, 100);
 		g2.fill(oval);
 		
 
@@ -120,6 +122,13 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		
+		if ((e.getButton() == 1) && oval.contains(e.getX(), e.getY()) ) {
+			
+			System.out.println("Testy test");
+			  test =+ 10;
+		      repaint();
+		    // JOptionPane.showMessageDialog(null,e.getX()+ "\n" + e.getY());
+		   }
 		
 		   
 		 }
