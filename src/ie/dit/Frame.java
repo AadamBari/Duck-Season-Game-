@@ -17,6 +17,7 @@ public class Frame extends JFrame {
         
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
+        
     }
 	
 	

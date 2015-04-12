@@ -3,6 +3,7 @@ package ie.dit;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +26,7 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 	int speed;
 	int test = 500;
 	Ellipse2D.Double oval;
+	Rectangle rect;
 	
 	public Duck() {
 		
@@ -83,9 +85,11 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 			
 		}
 		
-		oval = new Ellipse2D.Double(500, 500, 100, 100);
+		oval = new Ellipse2D.Double(test, 500, 100, 100);
 		g2.fill(oval);
 		
+		rect = new Rectangle(250, 250, 100, 100);
+		g2.fill(rect);
 
 		
 		/*
@@ -119,15 +123,15 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 	} //end actionPerformed()
 
 
-	@Override
+	//@Override
 	public void mouseClicked(MouseEvent e) {
 		
-		if ((e.getButton() == 1) && oval.contains(e.getX(), e.getY()) ) {
+		if (oval.contains(e.getX(), e.getY()) ) {
 			
 			System.out.println("Testy test");
-			  test =+ 10;
+			  test = test + 10;
+			  
 		      repaint();
-		    // JOptionPane.showMessageDialog(null,e.getX()+ "\n" + e.getY());
 		   }
 		
 		   

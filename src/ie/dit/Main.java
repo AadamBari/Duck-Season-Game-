@@ -9,6 +9,7 @@ public class Main{
 		Frame f = new Frame();
 		Duck d = new Duck();
 		f.add(d);
+		f.addMouseListener(d);
 		
 	}
 
