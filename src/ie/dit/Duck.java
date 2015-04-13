@@ -142,20 +142,19 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 	//@Override
 	public void mouseClicked(MouseEvent e) {
 		
-		for(int i = 0; i < 10; i++){
+		for(Ellipse2D.Double j : duckList){
 			
-			if (oval.contains(e.getX(), e.getY()) ) {
+			if (j.contains(e.getX(), e.getY()) ) {
 				
-				System.out.println("Testy test");
-				  test = test + 10;
+				System.out.println("Testy test again");
 				  
 			      repaint();
-			   }
+			   }//end if
 			
-		}
+		}//end for loop
 		
 		   
-		 }
+		 }//end MouseClicked
 
 	@Override
 	public void mousePressed(MouseEvent e) {
