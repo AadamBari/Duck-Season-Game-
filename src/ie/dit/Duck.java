@@ -3,6 +3,7 @@ package ie.dit;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.awt.event.ActionEvent;
@@ -10,16 +11,21 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Duck extends JPanel implements ActionListener,  MouseListener{
 	
 	Timer timer;
 	
+	Ellipse2D.Double duckBody;
+	Ellipse2D.Double duckHead;
+	ArrayList<Ellipse2D.Double> duckList = new ArrayList<Ellipse2D.Double>();
 	int bodyHeight, bodyWidth, headHeight, headWidth;
 	int[] duckX = new int[10];
 	int[] duckY = new int[10];
@@ -27,6 +33,7 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 	int test = 500;
 	Ellipse2D.Double oval;
 	Rectangle rect;
+	Image duckImage;
 	
 	public Duck() {
 		
@@ -50,7 +57,7 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 		}
 		
 		//set timer refresh every ten milliseconds
-		timer = new Timer(10, this);//use 10
+		timer = new Timer(20, this);//use 10
         timer.start();
         
        	}//end Duck() method
@@ -60,6 +67,10 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 	public void paintComponent(Graphics g) {
 		
 		super.paintComponent(g);
+		
+		//load duck image
+		ImageIcon icon = new ImageIcon("resources/duck.png");
+		duckImage = icon.getImage();
 		
 		//set background
 		Color backC = new Color(0, 173, 255);
@@ -72,14 +83,26 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 		Color bodyC = new Color(255, 251, 0);
 		g2.setColor(bodyC);
 		
+		/*
+		for (int i = 0; i < 10; i++)
+		{
+			g2.drawImage(duckImage, duckX[i], duckY[i], bodyWidth, bodyHeight, null);
+			duckX[i] += speed;
+			
+		}
+		*/
+		
+		//changed to image instead of drawing shapes for easier hit detection
 		//create ellipse for duck body
 		for (int i = 0; i < 10; i++)
 		{
-			Ellipse2D.Double duckBody = new Ellipse2D.Double(duckX[i], duckY[i], bodyWidth, bodyHeight);
-			g2.fill(duckBody);
 			
-			Ellipse2D.Double duckHead = new Ellipse2D.Double(duckX[i] + 40, duckY[i] - 20, headWidth, headHeight);
-			g2.fill(duckHead);
+			duckBody = new Ellipse2D.Double(duckX[i], duckY[i], bodyWidth, bodyHeight);
+			g2.fill(duckBody);
+			duckList.add(duckBody);
+			
+			////duckHead = new Ellipse2D.Double(duckX[i] + 40, duckY[i] - 20, headWidth, headHeight);
+			//g2.fill(duckHead);
 			
 			duckX[i] += speed;
 			
@@ -92,13 +115,6 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 		g2.fill(rect);
 
 		
-		/*
-		Point2D.Double p1 = new Point2D.Double(200, 200);
-		Point2D.Double p2 = new Point2D.Double(500, 200);
-		
-		Line2D.Double l2 = new Line2D.Double(p1, p2);
-		g2.draw(l2);
-		*/
 	}//end paintComponent
 	
 	
@@ -126,13 +142,17 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 	//@Override
 	public void mouseClicked(MouseEvent e) {
 		
-		if (oval.contains(e.getX(), e.getY()) ) {
+		for(int i = 0; i < 10; i++){
 			
-			System.out.println("Testy test");
-			  test = test + 10;
-			  
-		      repaint();
-		   }
+			if (oval.contains(e.getX(), e.getY()) ) {
+				
+				System.out.println("Testy test");
+				  test = test + 10;
+				  
+			      repaint();
+			   }
+			
+		}
 		
 		   
 		 }
