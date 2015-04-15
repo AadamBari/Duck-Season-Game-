@@ -1,5 +1,7 @@
 package ie.dit;
 
+import java.awt.Cursor;
+
 import javax.swing.JFrame;
 
 
@@ -17,6 +19,9 @@ public class Frame extends JFrame {
         
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
+        
+        Cursor crossHair = new Cursor(Cursor.CROSSHAIR_CURSOR);
+        setCursor(crossHair);
         
     }
 	

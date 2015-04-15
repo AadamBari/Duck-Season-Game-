@@ -22,6 +22,8 @@ import java.util.Random;
 
 public class Duck extends JPanel implements ActionListener,  MouseListener{
 	
+	public static boolean runGame = true;
+	
 	Timer timer;
 	
 	Ellipse2D.Double duckBody;
@@ -131,6 +133,7 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 		}
 		g2.setColor(bodyC);
 		
+		//Test shapes
 		//oval = new Ellipse2D.Double(test, 500, 100, 100);
 		//g2.fill(oval);
 		
@@ -166,12 +169,14 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		
 		//test shape hit detection
-		if (oval.contains(e.getX(), e.getY()) ) {
+		/*if (oval.contains(e.getX(), e.getY()) ) {
 			
 			System.out.println("Testy test again");
 			test = test + 10;
 		      repaint();
 		   }//end if
+		*/   
+		
 		
 		/*attempted duck hit detection
 		for(Ellipse2D.Double j : duckList){
