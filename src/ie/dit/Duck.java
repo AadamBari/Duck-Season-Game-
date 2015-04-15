@@ -98,7 +98,7 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 		*/
 		
 		//changed to image instead of drawing shapes for easier hit detection
-		//create ellipse for duck body
+		//draw duck within this loop
 		for (int i = 0; i < 10; i++)
 		{
 			
