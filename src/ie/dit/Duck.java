@@ -131,11 +131,11 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 		}
 		g2.setColor(bodyC);
 		
-		oval = new Ellipse2D.Double(test, 500, 100, 100);
-		g2.fill(oval);
+		//oval = new Ellipse2D.Double(test, 500, 100, 100);
+		//g2.fill(oval);
 		
-		rect = new Rectangle(250, 250, 100, 100);
-		g2.fill(rect);
+		//rect = new Rectangle(250, 250, 100, 100);
+		//g2.fill(rect);
 
 		
 	}//end paintComponent
@@ -165,6 +165,7 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		
+		//test shape hit detection
 		if (oval.contains(e.getX(), e.getY()) ) {
 			
 			System.out.println("Testy test again");
@@ -172,6 +173,7 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 		      repaint();
 		   }//end if
 		
+		/*attempted duck hit detection
 		for(Ellipse2D.Double j : duckList){
 			
 			if (j.contains(e.getX(), e.getY()) ) {
@@ -181,7 +183,7 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 			   }//end if
 			
 		}//end for loop
-		
+		*/
 		   
 		 }//end MouseClicked
 
