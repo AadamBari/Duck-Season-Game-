@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.awt.event.ActionEvent;
@@ -25,8 +26,11 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 	
 	Ellipse2D.Double duckBody;
 	Ellipse2D.Double duckHead;
+	Ellipse2D.Double duckEye;
+	Rectangle neck;
+	Polygon beak;
 	ArrayList<Ellipse2D.Double> duckList = new ArrayList<Ellipse2D.Double>();
-	int bodyHeight, bodyWidth, headHeight, headWidth;
+	int bodyHeight, bodyWidth, headHeight, headWidth, eyeSize;
 	int[] duckX = new int[10];
 	int[] duckY = new int[10];
 	int speed;
@@ -45,6 +49,7 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 		this.bodyWidth = 60;
 		this.headHeight = 20;
 		this.headWidth = 20;
+		this.eyeSize = 5;
 		
 		//duck velocity
 		this.speed = 5;
@@ -82,8 +87,8 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 		//set color
 		Color bodyC = new Color(255, 251, 0);
 		g2.setColor(bodyC);
-		
 		/*
+		
 		for (int i = 0; i < 10; i++)
 		{
 			g2.drawImage(duckImage, duckX[i], duckY[i], bodyWidth, bodyHeight, null);
@@ -97,16 +102,34 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 		for (int i = 0; i < 10; i++)
 		{
 			
-			duckBody = new Ellipse2D.Double(duckX[i], duckY[i], bodyWidth, bodyHeight);
+			//duckBody = new Ellipse2D.Double(duckX[i], duckY[i], bodyWidth, bodyHeight);
+		    duckBody = new Ellipse2D.Double(duckX[i], duckY[i], bodyWidth, bodyHeight);
 			g2.fill(duckBody);
 			duckList.add(duckBody);
 			
-			////duckHead = new Ellipse2D.Double(duckX[i] + 40, duckY[i] - 20, headWidth, headHeight);
-			//g2.fill(duckHead);
+			duckHead = new Ellipse2D.Double(duckX[i] + 40, duckY[i] - 20, headWidth, headHeight);
+			g2.fill(duckHead);
+			
+			g2.setColor(Color.BLACK);
+			duckEye = new Ellipse2D.Double(duckX[i] + 50, duckY[i] - 15, eyeSize, eyeSize);
+			g2.fill(duckEye);
+			
+			//coords for beak polygon
+			int[] xPoints = {duckX[i] + 55, duckX[i] + 70, duckX[i] + 55};
+			int[] yPoints = {duckY[i] - 10, duckY[i] -5, duckY[i]};
+			
+			g2.setColor(Color.ORANGE);
+			beak = new Polygon(xPoints, yPoints , 3);
+			g2.fill(beak);
+			
+			g2.setColor(bodyC);
+			neck = new Rectangle(duckX[i] + 42, duckY[i] - 5, 10, 15);
+			g2.fill(neck);
 			
 			duckX[i] += speed;
 			
 		}
+		g2.setColor(bodyC);
 		
 		oval = new Ellipse2D.Double(test, 500, 100, 100);
 		g2.fill(oval);
@@ -139,15 +162,21 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 	} //end actionPerformed()
 
 
-	//@Override
+	@Override
 	public void mouseClicked(MouseEvent e) {
+		
+		if (oval.contains(e.getX(), e.getY()) ) {
+			
+			System.out.println("Testy test again");
+			test = test + 10;
+		      repaint();
+		   }//end if
 		
 		for(Ellipse2D.Double j : duckList){
 			
 			if (j.contains(e.getX(), e.getY()) ) {
 				
 				System.out.println("Testy test again");
-				  
 			      repaint();
 			   }//end if
 			
