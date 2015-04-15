@@ -22,7 +22,6 @@ import java.util.Random;
 
 public class Duck extends JPanel implements ActionListener,  MouseListener{
 	
-	public static boolean runGame = true;
 	
 	Timer timer;
 	

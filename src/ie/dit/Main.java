@@ -9,7 +9,7 @@ public class Main{
 		
 		Frame f = new Frame();
 		
-		if (runGame == true){
+		if (runGame == false){
 			
 			Duck d = new Duck();
 			f.add(d);
@@ -19,6 +19,8 @@ public class Main{
 		else
 		{
 			
+			Menu m = new Menu();
+			f.add(m);
 			
 		}
 		
