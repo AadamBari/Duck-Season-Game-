@@ -47,7 +47,17 @@ public class Menu extends JPanel implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
+		
+		
+			if (menu.contains(e.getX(), e.getY()) ) {
+				
+				System.out.println("Testy test");
+				Main.runGame = true;
+				
+				repaint();
+			   }//end if
+				
+		
 		
 	}
 

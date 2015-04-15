@@ -62,8 +62,8 @@ public class Duck extends JPanel implements ActionListener,  MouseListener{
 			this.duckY[i] = init.nextInt(640);
 		}
 		
-		//set timer refresh every ten milliseconds
-		timer = new Timer(20, this);//use 10
+		//set timer refresh every 20  milliseconds
+		timer = new Timer(20, this);
         timer.start();
         
        	}//end Duck() method
